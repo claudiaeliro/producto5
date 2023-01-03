@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pooco.controlador.ControladorClientes">
+    <children>
+      <Label layoutX="150.0" layoutY="7.0" prefHeight="54.0" prefWidth="294.0" text="Añadir cliente" textAlignment="CENTER" textFill="#1509f2" underline="true">
+        <font>
+            <Font name="Arial" size="46.0" />
+        </font>
+      </Label>
+      <Pane layoutX="24.0" layoutY="70.0" prefHeight="346.0" prefWidth="557.0" style="-fx-background-color: cyan;">
+         <children>
+            <Label layoutX="67.0" layoutY="28.0" text="eMail">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="67.0" layoutY="85.0" text="Nombre">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="67.0" layoutY="140.0" text="Domicilio">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="66.0" layoutY="199.0" text="Nif">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="65.0" layoutY="262.0" text="Tipo">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <TextField fx:id="txteMail" layoutX="67.0" layoutY="45.0" promptText="Introduce eMail" />
+            <TextField fx:id="txtNombre" layoutX="67.0" layoutY="102.0" promptText="Introduce nombre" />
+            <TextField fx:id="txtDomicilio" layoutX="67.0" layoutY="157.0" promptText="Introduce domicilio" />
+            <TextField fx:id="txtNif" layoutX="67.0" layoutY="216.0" promptText="Introduce nif" />
+            <Button fx:id="btnAñadir" layoutX="316.0" layoutY="36.0" mnemonicParsing="false" onAction="#addCliente" prefHeight="44.0" prefWidth="183.0" text="Añadir" textFill="#1509f2">
+               <font>
+                  <Font name="Arial" size="21.0" />
+               </font>
+            </Button>
+            <Button fx:id="volverAñadir" layoutX="316.0" layoutY="270.0" mnemonicParsing="false" onAction="#btnSalir" prefHeight="44.0" prefWidth="183.0" text="Volver" textFill="#ec0a0a">
+               <font>
+                  <Font name="Arial" size="21.0" />
+               </font>
+            </Button>
+            <RadioButton fx:id="rdEstandar" layoutX="77.0" layoutY="284.0" mnemonicParsing="false" onAction="#cambiaTipo" selected="true" text="Estandar" />
+            <RadioButton fx:id="rdPremium" layoutX="77.0" layoutY="306.0" mnemonicParsing="false" onAction="#cambiaTipo" text="Premium" />
+            <TextArea fx:id="txtResult" layoutX="316.0" layoutY="94.0" prefHeight="127.0" prefWidth="183.0" visible="false" />
+         </children>
+      </Pane>
+   </children>    
+</AnchorPane>
