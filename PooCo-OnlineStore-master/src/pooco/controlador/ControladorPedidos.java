@@ -24,6 +24,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javafx.scene.layout.Pane;
 
 public class ControladorPedidos  {
     private Datos datos;
@@ -271,6 +272,24 @@ public class ControladorPedidos  {
             txtResult.setVisible(true);
             txtResult.setText("");
             txtResult.setText("Cliente no encontrado.");
+     /*        try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(OnlineStore.class.getResource("/pooco/vista/AddClienteVistaFX.fxml"));
+                Pane ventana = (Pane) loader.load();
+                ControladorClientes controlador=loader.getController();
+                Scene scene = new Scene(ventana);
+                Stage stage=new Stage();
+                stage.setScene(scene);
+                stage.show();
+
+                 stage.setOnCloseRequest(e -> controlador.closeWindowMenuClientes("AÑADIR"));
+                //Lo utilizo para volver cuando cierre el formulario
+                Stage myStage=(Stage) añadirCliente.getScene().getWindow();
+                myStage.close();
+
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            } */
         }
 
     }

@@ -25,7 +25,7 @@
                   <Font size="21.0" />
                </font>
             </Button>
-            <Button fx:id="gestionPedidos" layoutX="122.0" layoutY="226.0" mnemonicParsing="false" onAction="#btnGestionPedidos" prefHeight="32.0" prefWidth="340.0" text="Gestión Pedidos" textFill="#be06ec">
+            <Button fx:id="gestionPedidos" layoutX="122.0" layoutY="226.0" mnemonicParsing="false" onAction="#btnGestionPedidos" prefHeight="32.0" prefWidth="340.0" text="Gestión Pedidos" textFill="#945002">
                <font>
                   <Font size="21.0" />
                </font>

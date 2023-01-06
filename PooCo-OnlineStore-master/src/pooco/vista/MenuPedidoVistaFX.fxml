@@ -6,32 +6,31 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
-            xmlns="http://javafx.com/javafx/19" fx:controller="pooco.controlador.ControladorPedidos">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pooco.controlador.ControladorPedidos">
     <children>
       <Pane prefHeight="450.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0">
          <children>
-            <Label alignment="CENTER" layoutX="210.0" layoutY="14.0" prefHeight="69.0" prefWidth="180.0" text="Pedidos" textAlignment="CENTER" textFill="#be06ec" underline="true">
+            <Label alignment="CENTER" layoutX="210.0" layoutY="14.0" prefHeight="69.0" prefWidth="180.0" text="Pedidos" textAlignment="CENTER" textFill="#945002" underline="true">
                <font>
                   <Font name="Arial" size="46.0" />
                </font>
             </Label>
-            <Button fx:id="añadirPedido" layoutX="130.0" layoutY="95.0" mnemonicParsing="false" onAction="#btnAddPedido" prefHeight="32.0" prefWidth="340.0" text="Añadir Pedido" textFill="#be06ec">
+            <Button fx:id="añadirPedido" layoutX="130.0" layoutY="95.0" mnemonicParsing="false" onAction="#btnAddPedido" prefHeight="32.0" prefWidth="340.0" text="Añadir Pedido" textFill="#945002">
                <font>
                   <Font size="21.0" />
                </font>
             </Button>
-            <Button fx:id="eliminarPedido" layoutX="130.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnEliminarPedido" prefHeight="32.0" prefWidth="340.0" text="Eliminar Pedido" textFill="#be06ec">
+            <Button fx:id="eliminarPedido" layoutX="130.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnEliminarPedido" prefHeight="32.0" prefWidth="340.0" text="Eliminar Pedido" textFill="#945002">
                <font>
                   <Font size="21.0" />
                </font>
             </Button>
-            <Button fx:id="MostrarPedidosPendientesDeEnvio" layoutX="130.0" layoutY="230.0" mnemonicParsing="false" onAction="#btnMostrarPedidoPE" prefHeight="32.0" prefWidth="340.0" text="Mostrar Pendientes de Envio" textFill="#be06ec">
+            <Button fx:id="MostrarPedidosPendientesDeEnvio" layoutX="130.0" layoutY="230.0" mnemonicParsing="false" onAction="#btnMostrarPedidoPE" prefHeight="32.0" prefWidth="340.0" text="Mostrar Pendientes de Envio" textFill="#945002">
                <font>
                   <Font size="21.0" />
                </font>
             </Button>
-            <Button fx:id="MostrarPedidosEnviados" layoutX="130.0" layoutY="300.0" mnemonicParsing="false" onAction="#btnMostrarPedidoEnv" prefHeight="32.0" prefWidth="340.0" text="Mostrar Pedidos Enviados" textFill="#be06ec">
+            <Button fx:id="MostrarPedidosEnviados" layoutX="130.0" layoutY="300.0" mnemonicParsing="false" onAction="#btnMostrarPedidoEnv" prefHeight="32.0" prefWidth="340.0" text="Mostrar Pedidos Enviados" textFill="#945002">
                <font>
                   <Font size="21.0" />
                </font>

@@ -80,7 +80,7 @@ public class ControladorClientes {
         }
     }
 
-    private void closeWindowMenuClientes(String ventanaCerrar) {
+    public void closeWindowMenuClientes(String ventanaCerrar) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(OnlineStore.class.getResource("/pooco/vista/MenuClienteVistaFX.fxml"));

@@ -17,8 +17,8 @@
       </Label>
       <Pane layoutX="19.0" layoutY="73.0" prefHeight="346.0" prefWidth="563.0" style="-fx-background-color: #bc8649;">
          <children>
-            <TextField fx:id="txteMailPendientesEnvioPedido" layoutX="40.0" layoutY="34.0" promptText="Introduce eMail" />
-            <Button fx:id="btnMostrarPendientesEnvio" layoutX="306.0" layoutY="25.0" mnemonicParsing="false" onAction="#mostrarPendientesEnvio" prefHeight="44.0" prefWidth="183.0" text="Mostrar" textFill="#945002">
+            <TextField fx:id="txteMailPendientesEnvioPedido" layoutX="40.0" layoutY="91.0" promptText="Introduce eMail" />
+            <Button fx:id="btnMostrarPendientesEnvio" layoutX="328.0" layoutY="21.0" mnemonicParsing="false" onAction="#mostrarPendientesEnvio" prefHeight="44.0" prefWidth="183.0" text="Mostrar" textFill="#945002">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
@@ -28,12 +28,13 @@
                   <Font name="Arial" size="21.0" />
                </font>
             </Button>
-            <TextArea fx:id="txtResultPendientes" editable="false" layoutX="42.0" layoutY="103.0" prefHeight="159.0" prefWidth="495.0" visible="false" />
-            <Label layoutX="40.0" layoutY="17.0" text="eMail">
+            <TextArea fx:id="txtResultPendientes" editable="false" layoutX="42.0" layoutY="120.0" prefHeight="160.0" prefWidth="495.0" visible="false" />
+            <Label layoutX="40.0" layoutY="74.0" text="eMail">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <Label layoutX="40.0" layoutY="14.0" text="Clica en Mostrar para ver todos los &#10;pedidos pendientes de envio o introduce &#10;un eMail para filtrar por Cliente" />
          </children>
       </Pane>
    </children>

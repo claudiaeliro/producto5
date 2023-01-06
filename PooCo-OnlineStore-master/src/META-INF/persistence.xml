@@ -8,10 +8,10 @@
     <class>pooco.modelo.Cliente</class>
     <class>pooco.modelo.Articulo</class>
     <properties>      
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/producto3?serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/poobbdd?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="1111"/>
+      <property name="javax.persistence.jdbc.password" value="poobd123"/>
     </properties>
   </persistence-unit>
 </persistence>
