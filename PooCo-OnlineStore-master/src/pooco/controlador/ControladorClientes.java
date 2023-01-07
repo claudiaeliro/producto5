@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import pooco.modelo.Datos;
 import pooco.vista.OnlineStore;
@@ -96,8 +95,8 @@ public class ControladorClientes {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-
     }
+    
     private void cerrarVentana(String ventana)
     {
         Stage myStage = null;
@@ -164,13 +163,12 @@ public class ControladorClientes {
             case "volverMostrar":
                 closeWindowMenuClientes("MOSTRAR");
                 break;
-            case "volverAñadir":
+            case "volverAñadirCliente":
                 closeWindowMenuClientes("AÑADIR");
                 break;
             default:
                 closeWindowMenuGestionOS();
         }
-
     }
 
     @FXML
@@ -182,8 +180,6 @@ public class ControladorClientes {
                 listViewClientes.getItems().add(lista.get(item).toString());
             }
         }
-
-
     }
 
     @FXML
@@ -252,7 +248,5 @@ public class ControladorClientes {
             rdPremium.setSelected(false);
         }
     }
-
-
 
 }

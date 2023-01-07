@@ -1,9 +1,6 @@
 package pooco.controlador;
 
 import java.io.IOException;
-import java.util.List;
-
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import pooco.modelo.Datos;
 import pooco.vista.*;
@@ -13,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
