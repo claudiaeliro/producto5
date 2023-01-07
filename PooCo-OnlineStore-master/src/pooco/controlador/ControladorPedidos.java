@@ -3,33 +3,23 @@ package pooco.controlador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import pooco.modelo.Articulo;
-import pooco.modelo.Cliente;
 import pooco.modelo.Datos;
 import pooco.modelo.Pedido;
 import pooco.vista.OnlineStore;
-
 import javax.swing.*;
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 import java.util.Locale;
-import java.util.ResourceBundle;
-import javafx.scene.layout.Pane;
 
 public class ControladorPedidos  {
     private Datos datos;
- //   private Cliente cliente;
- //   private Articulo articulo;
 
     @FXML
     private Button añadirPedido;
@@ -100,7 +90,6 @@ public class ControladorPedidos  {
             Stage myStage=(Stage) this.añadirPedido.getScene().getWindow();
             myStage.close();
 
-
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -165,7 +154,8 @@ public class ControladorPedidos  {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-    }
+    }    
+  
     private void comenzarPedido()
     {
         int numPedido = datos.getNumeroPedido();
@@ -250,10 +240,7 @@ public class ControladorPedidos  {
                 break;
             case "volverEnviadosPedido":
                 closeWindowMenuPedidos("ENVIADOS");
-                break;
-            case "volverAñadirCliente":
-                closeWindowMenuPedidos("ADDClientePedido");
-                break;
+                break;            
             default:
                 closeWindowMenuGestionOS();
         }
@@ -273,29 +260,9 @@ public class ControladorPedidos  {
             txtResult.setVisible(true);
             txtResult.setText("");
             txtResult.setText("Cliente no encontrado.");
-             try {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(OnlineStore.class.getResource("/pooco/vista/AddClienteVistaFX.fxml"));
-                Pane ventana = (Pane) loader.load();
-                ControladorClientes controlCliente=loader.getController();
-                Scene scene = new Scene(ventana);
-                Stage stage=new Stage();
-                stage.setScene(scene);
-                stage.show();
-                
-                ControladorPedidos controlPedidos =loader.getController();
-
-                 stage.setOnCloseRequest(e -> controlPedidos.closeWindowMenuPedidos("ADDClientePedido"));
-                //Lo utilizo para volver cuando cierre el formulario
-                Stage myStage=(Stage) añadirClientePedido.getScene().getWindow();
-                myStage.close();
-
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            } 
         }
-
     }
+    
    @FXML
    private void onEnter2(ActionEvent event)
    {       
@@ -310,7 +277,6 @@ public class ControladorPedidos  {
            txtResult.setText("");
            txtResult.setText("Artículo no existe.");
        }
-
    }
 
 
@@ -322,12 +288,8 @@ public class ControladorPedidos  {
         {
             success=datos.setPedido(Integer.parseInt(txtNumeroPedido.getText()),datos.getArticuloByCodigo(txtCodigoArtPedido.getText()),
                     Integer.parseInt(txtCantidadPedido.getText()),datos.clienteByEmail(txteMailPedido.getText()));
-            if (success==true) {
-                txtResult.setText("Pedido realizado!!!!");
-                txtResult.setText("Pvp Venta Artculo: " + datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getPvpVenta());
-                txtResult.setText("Total pedido: " + datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getPvpVenta() * Integer.parseInt(txtCantidadPedido.getText()));
-                addMostrar();
-                //falta Gastos envio
+            if (success==true) {                
+                addMostrar();                
             }
             else {
                 txtResult.setText("Problemas al realizar el pedido." + "\n" +
@@ -341,6 +303,7 @@ public class ControladorPedidos  {
         float descuento;
         float gastosEnvio;
         int cantidad;
+        float total;
         if (datos.clienteByEmail(txteMailPedido.getText())!=null && datos.getArticuloByCodigo(txtCodigoArtPedido.getText())!=null)
         {
             gastosEnvio=datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getGastosEnvio();
@@ -353,22 +316,23 @@ public class ControladorPedidos  {
             } else descuento=0;
             cantidad=Integer.parseInt(txtCantidadPedido.getText());
             gastosEnvio=datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getGastosEnvio();
+            total = datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getPvpVenta() * cantidad;  
 
             textoPedido="Pedido realizado!!!!" + "\n" +
                 "Número de Pedido: " + txtNumeroPedido.getText()+ "\n" +
-                "Articulo :" + datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getDescripcion() + "\n" +
-                "PVP: " + datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getPvpVenta() + "\n" +
                 "Cliente: " + datos.clienteByEmail(txteMailPedido.getText()).getIdeMail() + " " + datos.clienteByEmail(txteMailPedido.getText()).getNombre() + "\n" +
-                "Descuento: " + Float.toString(descuento) + "\n" +
-                "Cantidad: " + Integer.toString(cantidad) + "\n" +
+                "Articulo :" + datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getDescripcion() + "\n" +
+                "PVP: " + datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getPvpVenta() + "\n" +   
+                "Cantidad: " + Integer.toString(cantidad) + "\n" +                
+                "Total: "  +  total + "\n" +
                 "Gastos Envio: " + Float.toString(gastosEnvio) + "\n" +
+                "Descuento: " + Float.toString(descuento) + "\n" +               
                 "Total gastos: " + gastosEnvio*((100f-descuento)/100f);
 
             txtResult.setText("");
             txtResult.setVisible(true);
             txtResult.setText(textoPedido);
         }
-
     }
 
     @FXML
@@ -412,22 +376,26 @@ public class ControladorPedidos  {
        if( respuesta==0) return true;
        else return false;
     }
+    
     private void  mensajePedidoNoExiste()
     {
         txtResultBorrar.setText("");
         txtResultBorrar.setVisible(true);
         txtResultBorrar.setText("No existe el pedido que quieres borrar.!!!!!");
     }
+    
     private void mostrarPedido(String pedido)
     {
         txtResultBorrar.setText("");
         txtResultBorrar.setVisible(true);
         txtResultBorrar.setText(pedido);
     }
+    
     @FXML
     private  void mostrarBorrar(ActionEvent event) {
         onComprobarPedido(event);
     }
+    
     @FXML
     public void onComprobarPedido(ActionEvent event) {
         try
@@ -487,6 +455,7 @@ public class ControladorPedidos  {
             listarTodosPedidosPorFiltro(email);
         }
     }
+    
     private void listarTodosPedidosPendientes()
     {
         List lista = datos.getListaPedidos();
@@ -524,7 +493,6 @@ public class ControladorPedidos  {
         }
     }
 
-
     @FXML
     public void mostrarEnviadosPedido(ActionEvent event) {
         String email="";
@@ -540,6 +508,7 @@ public class ControladorPedidos  {
             listarTodosPedidosPorFiltroEnviados(email);
         }
     }
+    
     private void listarTodosPedidosEnviados()
     {
         txtResultEnviados.setText("");
@@ -575,8 +544,8 @@ public class ControladorPedidos  {
         } else {
             txtResultEnviados.setText("No existe ningún pedido pendiente del cliente " + email);
         }
-
     }
+    
 }
 
 
