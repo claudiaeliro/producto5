@@ -291,12 +291,11 @@ public class ControladorPedidos  {
     }
    @FXML
    private void onEnter2(ActionEvent event)
-   {
-       articulo=datos.getArticuloByCodigo(txtCodigoArtPedido.getText());
-       if (articulo!=null){
+   {       
+       if (datos.getArticuloByCodigo(txtCodigoArtPedido.getText())!=null){
            txtResult.setVisible(false);
            txtResult.setText("");
-           txtArticuloPedido.setText(articulo.toString());
+           txtArticuloPedido.setText(datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).toString());
        }
        else
        {
@@ -312,15 +311,16 @@ public class ControladorPedidos  {
         boolean success=false;
         txtResult.setText("");
         txtResult.setVisible(true);
-        if (cliente!=null && articulo!=null)
+        if (datos.clienteByEmail(txteMailPedido.getText())!=null && datos.getArticuloByCodigo(txtCodigoArtPedido.getText())!=null)
         {
-            success=datos.setPedido(Integer.parseInt(txtNumeroPedido.getText()),articulo,
-                    Integer.parseInt(txtNumeroPedido.getText()),cliente);
+            success=datos.setPedido(Integer.parseInt(txtNumeroPedido.getText()),datos.getArticuloByCodigo(txtCodigoArtPedido.getText()),
+                    Integer.parseInt(txtCantidadPedido.getText()),datos.clienteByEmail(txteMailPedido.getText()));
             if (success==true) {
                 txtResult.setText("Pedido realizado!!!!");
-                articulo.
-                cliente=null;
-                articulo=null;
+                txtResult.setText("Pvp Venta Artculo: " + datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getPvpVenta());
+                txtResult.setText("Total pedido: " + datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getPvpVenta() * Integer.parseInt(txtCantidadPedido.getText()));
+                
+                //falta Gastos envio
             }
             else {
                 txtResult.setText("Problemas al realizar el pedido." + "\n" +
