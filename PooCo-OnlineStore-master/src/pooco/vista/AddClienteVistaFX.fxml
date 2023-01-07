@@ -47,7 +47,7 @@
                   <Font name="Arial" size="21.0" />
                </font>
             </Button>
-            <Button fx:id="volverAñadir" layoutX="316.0" layoutY="270.0" mnemonicParsing="false" onAction="#btnSalir" prefHeight="44.0" prefWidth="183.0" text="Volver" textFill="#ec0a0a">
+            <Button fx:id="volverAñadirCliente" layoutX="316.0" layoutY="270.0" mnemonicParsing="false" onAction="#btnSalir" prefHeight="44.0" prefWidth="183.0" text="Volver" textFill="#ec0a0a">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>

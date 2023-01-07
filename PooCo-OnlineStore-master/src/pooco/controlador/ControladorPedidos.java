@@ -34,6 +34,8 @@ public class ControladorPedidos  {
     @FXML
     private Button añadirPedido;
     @FXML
+    private Button añadirClientePedido;
+    @FXML
     private Button eliminarPedido;
     @FXML
     private Button MostrarPedidosPendientesDeEnvio;
@@ -249,6 +251,9 @@ public class ControladorPedidos  {
             case "volverEnviadosPedido":
                 closeWindowMenuPedidos("ENVIADOS");
                 break;
+            case "volverAñadirCliente":
+                closeWindowMenuPedidos("ADDClientePedido");
+                break;
             default:
                 closeWindowMenuGestionOS();
         }
@@ -268,24 +273,26 @@ public class ControladorPedidos  {
             txtResult.setVisible(true);
             txtResult.setText("");
             txtResult.setText("Cliente no encontrado.");
-     /*        try {
+             try {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(OnlineStore.class.getResource("/pooco/vista/AddClienteVistaFX.fxml"));
                 Pane ventana = (Pane) loader.load();
-                ControladorClientes controlador=loader.getController();
+                ControladorClientes controlCliente=loader.getController();
                 Scene scene = new Scene(ventana);
                 Stage stage=new Stage();
                 stage.setScene(scene);
                 stage.show();
+                
+                ControladorPedidos controlPedidos =loader.getController();
 
-                 stage.setOnCloseRequest(e -> controlador.closeWindowMenuClientes("ADDClientePedido"));
+                 stage.setOnCloseRequest(e -> controlPedidos.closeWindowMenuPedidos("ADDClientePedido"));
                 //Lo utilizo para volver cuando cierre el formulario
-                Stage myStage=(Stage) añadirCliente.getScene().getWindow();
+                Stage myStage=(Stage) añadirClientePedido.getScene().getWindow();
                 myStage.close();
 
             } catch (IOException e) {
                 System.out.println(e.getMessage());
-            } */
+            } 
         }
 
     }

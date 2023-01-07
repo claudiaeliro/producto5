@@ -164,7 +164,7 @@ public class ControladorClientes {
             case "volverMostrar":
                 closeWindowMenuClientes("MOSTRAR");
                 break;
-            case "volverAñadir":
+            case "volverAñadirCliente":
                 closeWindowMenuClientes("AÑADIR");
                 break;
             default:
