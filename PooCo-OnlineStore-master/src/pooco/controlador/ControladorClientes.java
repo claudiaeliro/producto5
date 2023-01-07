@@ -225,16 +225,16 @@ public class ControladorClientes {
                 success = datos.setCliente(codigo, nombreCliente, domicilioCliente, nifCliente, tipoCliente);
             } else {
                 txtResult.setVisible(true);
-                txtResult.setText("El Email " + codigo + "\nya existe.");
+                txtResult.setText("El eMail " + codigo + "\nya existe.");
             }
             if(success) {
                 txtResult.setVisible(true);
-                txtResult.setText("El Email " + codigo + "\nse ha introducido \ncorrectamente.");
+                txtResult.setText("El eMail " + codigo + "\nse ha introducido \ncorrectamente.");
             }
         }
         else {
             txtResult.setVisible(true);
-            txtResult.setText("Debe insertar un email.");
+            txtResult.setText("Debe insertar un eMail.");
         }
         txteMail.setText("");
         txtNombre.setText("");

@@ -237,14 +237,11 @@ public class ControladorPedidos  {
     public void btnSalir(ActionEvent event) {
        String id = ((Node) event.getSource()).getId();
         switch (id){
-            case "volverBorrarPedido":
-                closeWindowMenuPedidos("ELIMINAR");
-                break;
-            case "volverEliminar":
-                closeWindowMenuPedidos("ELIMINAR");
-                break;
             case "volverAñadir":
                 closeWindowMenuPedidos("AÑADIR");
+                break;
+            case "volverBorrarPedido":
+                closeWindowMenuPedidos("BORRAR");
                 break;
             case "volverPendientesEnvioPedido":
                 closeWindowMenuPedidos("PENDIENTESENVIO");
@@ -282,7 +279,7 @@ public class ControladorPedidos  {
                 stage.setScene(scene);
                 stage.show();
 
-                 stage.setOnCloseRequest(e -> controlador.closeWindowMenuClientes("AÑADIR"));
+                 stage.setOnCloseRequest(e -> controlador.closeWindowMenuClientes("ADDClientePedido"));
                 //Lo utilizo para volver cuando cierre el formulario
                 Stage myStage=(Stage) añadirCliente.getScene().getWindow();
                 myStage.close();
@@ -327,9 +324,9 @@ public class ControladorPedidos  {
             }
             else {
                 txtResult.setText("Problemas al realizar el pedido." + "\n" +
-                        "Rebise el pedido.");
+                        "Revise el pedido.");
             }
-        } else txtResult.setText("No se puede dar de alta un pedido sin un Cliente o Articulo.");
+        } else txtResult.setText("No se puede dar de alta un pedido sin un Cliente y/o Articulo.");
     }
 
     public void addMostrar(ActionEvent event) {

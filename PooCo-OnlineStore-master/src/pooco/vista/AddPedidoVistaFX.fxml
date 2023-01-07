@@ -38,18 +38,20 @@
             <TextField fx:id="txtCodigoArtPedido" layoutX="14.0" layoutY="177.0" onAction="#onEnter2" prefHeight="25.0" prefWidth="183.0" promptText="Introduce  codigo" />
             <TextField fx:id="txtArticuloPedido" editable="false" layoutX="14.0" layoutY="204.0" prefHeight="25.0" prefWidth="299.0" />
             <TextField fx:id="txtCantidadPedido" layoutX="14.0" layoutY="271.0" prefHeight="25.0" prefWidth="183.0" promptText="Intrioduce Cantidad" />
-            <Button fx:id="volverAñadir" layoutX="328.0" layoutY="287.0" mnemonicParsing="false" onAction="#btnSalir" prefHeight="44.0" prefWidth="183.0" text="Volver" textFill="#ec0a0a">
+            <Button fx:id="volverAñadir" layoutX="341.0" layoutY="284.0" mnemonicParsing="false" onAction="#btnSalir" prefHeight="44.0" prefWidth="183.0" text="Volver" textFill="#ec0a0a">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
             </Button>
-            <Button fx:id="btnAñadir" layoutX="357.0" layoutY="36.0" mnemonicParsing="false" onAction="#addPedido" prefHeight="44.0" prefWidth="183.0" text="Añadir" textFill="#945002">
+            <Button fx:id="btnAñadir" layoutX="341.0" layoutY="38.0" mnemonicParsing="false" onAction="#addPedido" prefHeight="44.0" prefWidth="183.0" text="Añadir" textFill="#945002">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
             </Button>
             <TextField fx:id="txtNumeroPedido" editable="false" layoutX="14.0" layoutY="47.0" prefHeight="25.0" prefWidth="114.0" />
             <TextArea fx:id="txtResult" editable="false" layoutX="328.0" layoutY="103.0" prefHeight="159.0" prefWidth="209.0" visible="false" />
+            <Label layoutX="124.0" layoutY="85.0" text="(Validar con intro)" />
+            <Label layoutX="128.0" layoutY="160.0" text="(Validar con intro)" />
          </children>
       </Pane>
    </children>

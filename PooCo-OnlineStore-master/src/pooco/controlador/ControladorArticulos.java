@@ -194,17 +194,7 @@ public class ControladorArticulos {
             default:
                 closeWindowMenuGestionOS();
         }
-
-
-
     }
-
-
-
-
-
-
-
 
     @FXML
     private void addArticulo(ActionEvent event) {
@@ -277,7 +267,7 @@ public class ControladorArticulos {
                 lblTiempoPrep.setVisible(false);
                 txtPreparacion.setVisible(false);
                 txtResult.setVisible(true);
-                txtResult.setText("No esxite un articulo con este código");
+                txtResult.setText("No existe un articulo con este código");
             }
         } else {
             txtResult.setVisible(true);
