@@ -28,8 +28,8 @@ import javafx.scene.layout.Pane;
 
 public class ControladorPedidos  {
     private Datos datos;
-    private Cliente cliente;
-    private Articulo articulo;
+ //   private Cliente cliente;
+ //   private Articulo articulo;
 
     @FXML
     private Button añadirPedido;
@@ -256,13 +256,12 @@ public class ControladorPedidos  {
 
     @FXML
     private void onEnter(ActionEvent event) {
-        // Voy a capturar el cliente
-        cliente=datos.clienteByEmail(txteMailPedido.getText());
-        if (cliente!=null)
+        // Voy a capturar el cliente        
+        if (datos.clienteByEmail(txteMailPedido.getText())!=null)
         {
             txtResult.setVisible(false);
-            txtResult.setText("");
-            txtClientePedido.setText(cliente.toString());
+            txtResult.setText("");            
+            txtClientePedido.setText(datos.clienteByEmail(txteMailPedido.getText()).toString());
 
         } else
         {
@@ -319,6 +318,7 @@ public class ControladorPedidos  {
                     Integer.parseInt(txtNumeroPedido.getText()),cliente);
             if (success==true) {
                 txtResult.setText("Pedido realizado!!!!");
+                articulo.
                 cliente=null;
                 articulo=null;
             }
