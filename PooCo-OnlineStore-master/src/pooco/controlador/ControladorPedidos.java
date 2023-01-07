@@ -28,8 +28,8 @@ import javafx.scene.layout.Pane;
 
 public class ControladorPedidos  {
     private Datos datos;
-    private Cliente cliente;
-    private Articulo articulo;
+ //   private Cliente cliente;
+ //   private Articulo articulo;
 
     @FXML
     private Button añadirPedido;
@@ -256,13 +256,12 @@ public class ControladorPedidos  {
 
     @FXML
     private void onEnter(ActionEvent event) {
-        // Voy a capturar el cliente
-        cliente=datos.clienteByEmail(txteMailPedido.getText());
-        if (cliente!=null)
+        // Voy a capturar el cliente        
+        if (datos.clienteByEmail(txteMailPedido.getText())!=null)
         {
             txtResult.setVisible(false);
-            txtResult.setText("");
-            txtClientePedido.setText(cliente.toString());
+            txtResult.setText("");            
+            txtClientePedido.setText(datos.clienteByEmail(txteMailPedido.getText()).toString());
 
         } else
         {
@@ -292,12 +291,11 @@ public class ControladorPedidos  {
     }
    @FXML
    private void onEnter2(ActionEvent event)
-   {
-       articulo=datos.getArticuloByCodigo(txtCodigoArtPedido.getText());
-       if (articulo!=null){
+   {       
+       if (datos.getArticuloByCodigo(txtCodigoArtPedido.getText())!=null){
            txtResult.setVisible(false);
            txtResult.setText("");
-           txtArticuloPedido.setText(articulo.toString());
+           txtArticuloPedido.setText(datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).toString());
        }
        else
        {
@@ -313,14 +311,16 @@ public class ControladorPedidos  {
         boolean success=false;
         txtResult.setText("");
         txtResult.setVisible(true);
-        if (cliente!=null && articulo!=null)
+        if (datos.clienteByEmail(txteMailPedido.getText())!=null && datos.getArticuloByCodigo(txtCodigoArtPedido.getText())!=null)
         {
-            success=datos.setPedido(Integer.parseInt(txtNumeroPedido.getText()),articulo,
-                    Integer.parseInt(txtNumeroPedido.getText()),cliente);
+            success=datos.setPedido(Integer.parseInt(txtNumeroPedido.getText()),datos.getArticuloByCodigo(txtCodigoArtPedido.getText()),
+                    Integer.parseInt(txtCantidadPedido.getText()),datos.clienteByEmail(txteMailPedido.getText()));
             if (success==true) {
                 txtResult.setText("Pedido realizado!!!!");
-                cliente=null;
-                articulo=null;
+                txtResult.setText("Pvp Venta Artculo: " + datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getPvpVenta());
+                txtResult.setText("Total pedido: " + datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getPvpVenta() * Integer.parseInt(txtCantidadPedido.getText()));
+                addMostrar();
+                //falta Gastos envio
             }
             else {
                 txtResult.setText("Problemas al realizar el pedido." + "\n" +
@@ -329,31 +329,33 @@ public class ControladorPedidos  {
         } else txtResult.setText("No se puede dar de alta un pedido sin un Cliente y/o Articulo.");
     }
 
-    public void addMostrar(ActionEvent event) {
+    public void addMostrar() {
         String textoPedido="";
         float descuento;
         float gastosEnvio;
         int cantidad;
-        if (cliente!=null && articulo!=null)
+        if (datos.clienteByEmail(txteMailPedido.getText())!=null && datos.getArticuloByCodigo(txtCodigoArtPedido.getText())!=null)
         {
-            gastosEnvio=articulo.getGastosEnvio();
-            if (datos.clienteTipoSTD(cliente.getIdeMail())!=null)
+            gastosEnvio=datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getGastosEnvio();
+            if (datos.clienteTipoSTD(datos.clienteByEmail(txteMailPedido.getText()).getIdeMail())!=null)
             {
-                descuento=datos.clienteTipoSTD(cliente.getIdeMail()).getDescuento();
+                descuento=datos.clienteTipoSTD(datos.clienteByEmail(txteMailPedido.getText()).getIdeMail()).getDescuento();
             }
-            else if (datos.clienteTipoPRM(cliente.getIdeMail())!=null) {
-                descuento=datos.clienteTipoPRM(cliente.getIdeMail()).getDescuento();
+            else if (datos.clienteTipoPRM(datos.clienteByEmail(txteMailPedido.getText()).getIdeMail())!=null) {
+                descuento=datos.clienteTipoPRM(datos.clienteByEmail(txteMailPedido.getText()).getIdeMail()).getDescuento();
             } else descuento=0;
             cantidad=Integer.parseInt(txtCantidadPedido.getText());
-            gastosEnvio=articulo.getGastosEnvio();
+            gastosEnvio=datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getGastosEnvio();
 
-            textoPedido="Número de Pedido: " + txtNumeroPedido.getText()+ "\n" +
-                "Articulo :" + articulo.getDescripcion() + "\n" +
-                "PVP: " + articulo.getPvpVenta() + "\n" +
-                "Cliente: " + cliente.getIdeMail() + " " + cliente.getNombre() + "\n" +
+            textoPedido="Pedido realizado!!!!" + "\n" +
+                "Número de Pedido: " + txtNumeroPedido.getText()+ "\n" +
+                "Articulo :" + datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getDescripcion() + "\n" +
+                "PVP: " + datos.getArticuloByCodigo(txtCodigoArtPedido.getText()).getPvpVenta() + "\n" +
+                "Cliente: " + datos.clienteByEmail(txteMailPedido.getText()).getIdeMail() + " " + datos.clienteByEmail(txteMailPedido.getText()).getNombre() + "\n" +
                 "Descuento: " + Float.toString(descuento) + "\n" +
                 "Cantidad: " + Integer.toString(cantidad) + "\n" +
-                "Gastos Envio: " + Float.toString(gastosEnvio);
+                "Gastos Envio: " + Float.toString(gastosEnvio) + "\n" +
+                "Total gastos: " + gastosEnvio*((100f-descuento)/100f);
 
             txtResult.setText("");
             txtResult.setVisible(true);
